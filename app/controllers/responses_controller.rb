@@ -3,7 +3,7 @@ class ResponsesController < ApplicationController
  def index
    @responses = Response.all
    render json: @responses
-   @response = Response.create!(params[:data])
+   Response.create!(data: params[:data])
  end
 
  # POST /responses
