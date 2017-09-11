@@ -17,8 +17,7 @@ ActiveRecord::Schema.define(version: 20170911181144) do
 
   create_table "responses", force: :cascade do |t|
     t.string "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    
   end
 
 end
