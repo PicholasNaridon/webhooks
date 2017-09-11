@@ -1,8 +1,9 @@
 class ResponsesController < ApplicationController
-  # GET /responsesw
+  # GET /responses
  def index
    @responses = Response.all
    render json: @responses
+   @response = Response.create!(params[:data])
  end
 
  # POST /responses
