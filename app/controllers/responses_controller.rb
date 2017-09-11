@@ -1,5 +1,5 @@
 class ResponsesController < ApplicationController
-  # GET /responses
+  # GET /responsesw
  def index
    @responses = Response.all
    render json: @responses
