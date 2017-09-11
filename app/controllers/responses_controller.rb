@@ -8,12 +8,12 @@ class ResponsesController < ApplicationController
  # POST /responses
  def create
    @response = Response.create!(response_params)
-   render json: @responses
+   render json: @response
  end
 
  # GET /responses/:id
  def show
-   render json: @responses
+   render json: @response
  end
 
  # PUT /responses/:id
