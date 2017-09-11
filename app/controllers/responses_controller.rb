@@ -2,18 +2,18 @@ class ResponsesController < ApplicationController
   # GET /responses
  def index
    @responses = Response.all
-   json_response(@responses)
+   render json: @responses
  end
 
  # POST /responses
  def create
    @response = Response.create!(response_params)
-   json_response(@response, :created)
+   render json: @responses
  end
 
  # GET /responses/:id
  def show
-   json_response(@response)
+   render json: @responses
  end
 
  # PUT /responses/:id
