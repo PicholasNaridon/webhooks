@@ -32,7 +32,7 @@ class ResponsesController < ApplicationController
 
  def response_params
    # whitelist params
-   params.permit(:body)
+   params.permit(:data)
  end
 
  def set_response
