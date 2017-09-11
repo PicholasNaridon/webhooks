@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20170911181144) do
   enable_extension "plpgsql"
 
   create_table "responses", force: :cascade do |t|
-    t.string "body"
-    
+    t.string "data"
+
   end
 
 end
