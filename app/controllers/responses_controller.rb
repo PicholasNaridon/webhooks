@@ -7,7 +7,13 @@ class ResponsesController < ApplicationController
    Tinypass.aid = ENV['TINYPASS_AID']
    Tinypass.private_key = ENV['TINYPASS_PRIVATE_KEY']
 
-   if params[:data].present?
+
+
+
+
+
+
+   if (params.has_key?(:data))
      decrypt = Tinypass::SecurityUtils.decrypt(ENV['TINYPASS_PRIVATE_KEY'], params[:data])
      Response.create(data: decrypt)
    end
