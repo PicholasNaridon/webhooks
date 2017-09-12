@@ -1,6 +1,5 @@
 class ResponsesController < ApplicationController
   # GET /responses
-  require 'Tinypass'
  def index
    Tinypass::ClientBuilder.new
    Tinypass.sandbox = true
