@@ -6,10 +6,11 @@ class ResponsesController < ApplicationController
    Tinypass.aid = ENV['TINYPASS_AID']
    Tinypass.private_key = ENV['TINYPASS_PRIVATE_KEY']
    @responses = Response.all
-   render json: @responses
-   the_params = params[:data]
+
    if params[:data] != nil
-     Response.create!(data:(Tinypass::SecurityUtils.decrypt(ENV['TINYPASS_PRIVATE_KEY'], the_params )))
+     Response.create!(data:Tinypass::SecurityUtils.decrypt(ENV['TINYPASS_PRIVATE_KEY'],params[:data] ))
+   else
+     render json: @responses
    end
  end
 
