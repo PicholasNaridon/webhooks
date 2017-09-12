@@ -9,9 +9,8 @@ class ResponsesController < ApplicationController
 
    if (params.has_key?(:data))
      Response.create!(data:Tinypass::SecurityUtils.decrypt(ENV['TINYPASS_PRIVATE_KEY'],params[:data] ))
-   else
-     render json: @responses
    end
+     render json: @responses
  end
 
  # POST /responses
