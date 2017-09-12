@@ -7,17 +7,12 @@ class ResponsesController < ApplicationController
    Tinypass.aid = ENV['TINYPASS_AID']
    Tinypass.private_key = ENV['TINYPASS_PRIVATE_KEY']
 
-
-
-
-
-
-
    if (params.has_key?(:data))
      string = params[:data].to_s
-     decrypt = Tinypass::SecurityUtils.decrypt(Tinypass.private_key, string)
+     decrypt = Tinypass::SecurityUtils.decrypt(ENV['TINYPASS_PRIVATE_KEY'], params[:data])
      Response.create(data: decrypt)
    end
+   
    render json: @responses
  end
 
