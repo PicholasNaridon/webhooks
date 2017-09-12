@@ -1,18 +1,17 @@
 class ResponsesController < ApplicationController
   # GET /responses
  def index
+   @responses = Response.all
    Tinypass::ClientBuilder.new
    Tinypass.sandbox = true
    Tinypass.aid = ENV['TINYPASS_AID']
    Tinypass.private_key = ENV['TINYPASS_PRIVATE_KEY']
 
-   @responses = Response.all
-
-   if (params.has_key?(:data))
-     decrypted = Tinypass::SecurityUtils.decrypt(ENV['TINYPASS_PRIVATE_KEY'],params[:data])
-     Response.create!(data: decrypted)
+   if params[:data].present?
+     decrypt = Tinypass::SecurityUtils.decrypt(ENV['TINYPASS_PRIVATE_KEY'], params[:data])
+     Response.create(data: decrypt)
    end
-     render json: @responses
+   render json: @responses
  end
 
  # POST /responses
