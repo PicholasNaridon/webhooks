@@ -2,6 +2,12 @@ class ResponsesController < ApplicationController
   # GET /responses
  def index
    @responses = Response.all
+   @json = []
+
+   @responses.each do |response|
+    @json << JSON.parse(response.data)
+  end
+
    Tinypass::ClientBuilder.new
    Tinypass.sandbox = true
    Tinypass.aid = ENV['TINYPASS_AID']
@@ -12,8 +18,7 @@ class ResponsesController < ApplicationController
      decrypt = Tinypass::SecurityUtils.decrypt(ENV['TINYPASS_PRIVATE_KEY'], params[:data])
      Response.create(data: decrypt)
    end
-   
-   render json: @responses
+   render json: @json
  end
 
  # POST /responses
